@@ -5,3 +5,5 @@ class ChatRequest(BaseModel):
     user_id: str
     role: str
     query: str
+
+

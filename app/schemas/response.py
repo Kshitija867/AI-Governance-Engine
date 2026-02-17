@@ -7,3 +7,6 @@ class ChatResponse(BaseModel):
     query: str
     decision: str
     message: str
+
+
+    
