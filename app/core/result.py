@@ -12,6 +12,7 @@ class GovernanceResult:
         self.role = context.role
         self.query = context.query
         self.risk_score = context.risk_score
+        self.context = context
         self.decision = decision
         self.response = response
 
