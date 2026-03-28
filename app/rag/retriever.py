@@ -4,8 +4,10 @@
 # converts user query to vector
 # search weaviate
 
+
 from app.rag.embedding_service import EmbeddingService
 from app.rag.vector_store import VectorStore
+
 
 class PolicyRetriever:
     def __init__(self):
@@ -13,5 +15,17 @@ class PolicyRetriever:
         self.store = VectorStore()
 
     async def retrieve(self, query: str, top_k: int = 3):
-        vector = await self.embedder.embed(query)
-        return self.store.search(vector, top_k)
+        if not query:
+            return []
+
+        try:
+            vector = await self.embedder.embed(query)
+            results = self.store.search(vector, top_k)
+
+            print("Retrieved Policies:", results)  # DEBUG LINE
+
+            return results
+
+        except Exception as e:
+            print(f"[Retriever Error]: {e}")
+            return []

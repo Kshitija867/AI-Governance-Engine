@@ -1,5 +1,5 @@
 # the traffic controller (API Layer)
-from app.core.risk.keyword_risk import KeywordRiskScorer
+# from app.core.risk.keyword_risk import KeywordRiskScorer
 from app.core.decision_engine import DecisionEngine
 from fastapi import FastAPI
 from app.schemas.request import ChatRequest
@@ -9,7 +9,7 @@ from app.services.llm_service import LLMService
 
 app = FastAPI(title="AI Governance Engine")
 governance_service = GovernanceService(
-    risk_scorer=KeywordRiskScorer(),
+    # risk_scorer=KeywordRiskScorer(),
     decision_engine=DecisionEngine(),
     llm_service=LLMService()
 )
@@ -26,3 +26,7 @@ async def chat_endpoint(request: dict):
 @app.get("/")
 def home():
     return {"status": "Server Working"}
+
+
+# python -m app.rag.ingestion_pipeline
+# python -m app.test_day4

@@ -1,3 +1,5 @@
+# purely uses risk_score +injection_score and return allow/ refuse/ etc
+
 from app.models.enums import DecisionType
 from app.core.context import GovernanceContext
 
@@ -7,6 +9,10 @@ class DecisionEngine:
 
         if context.risk_score is None:
             raise ValueError("Risk score must be calculated before decision.")
+
+        # Hard injection override
+        if context.injection_score and context.injection_score >= 0.8:
+            return DecisionType.ESCALATE
 
         if context.risk_score >= 0.8:
             return DecisionType.ESCALATE

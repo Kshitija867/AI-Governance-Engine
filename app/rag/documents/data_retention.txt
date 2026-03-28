@@ -1,0 +1,2 @@
+Customer data must be retained for 7 years in compliance with regulatory requirements.
+Personal identifiable information must be protected and accessible only to authorized personnel.
